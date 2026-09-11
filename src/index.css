@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Outfit', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  --color-navy:          #0B1F4A;
+  --color-navy-light:    #1A3366;
+  --color-navy-muted:    #2D4A7A;
+  --color-brand:         #FF6B00;
+  --color-brand-hover:   #E55F00;
+  --color-brand-light:   #FF8C33;
+  --color-brand-subtle:  #FFF4ED;
+  --color-surface:       #F6F8FC;
+  --color-surface-2:     #EDF0F7;
+  --color-border:        #E2E8F0;
+  --color-muted:         #7A8BA6;
+  --color-success:       #16A34A;
+  --color-success-light: #DCFCE7;
+  --color-warning:       #D97706;
+  --color-warning-light: #FEF3C7;
+  --color-danger:        #DC2626;
+  --color-danger-light:  #FEE2E2;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overscroll-behavior-y: none;
+}
+
+body {
+  font-family: var(--font-body), 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #06101E;
+  color: #0B1F4A;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+/* Adjustments Mapbox Canvas */
+.mapboxgl-map {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.mapboxgl-ctrl-bottom-left,
+.mapboxgl-ctrl-bottom-right {
+  display: none !important;
+}
+
+/* Safe Area Margin pou iPhone / Android Notch */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 1rem);
+}
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 1rem);
+}
+
+/* Scrollbar Hide */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Utility Classes */
+.font-display {
+  font-family: var(--font-display), 'Outfit', sans-serif;
+}
+
+.scale-98 {
+  transform: scale(0.98);
+}
+
+.active-scale:active {
+  transform: scale(0.96);
+  transition: transform 0.1s ease;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translate3d(0, 24px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translate3d(28px, 0, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -8px, 0); }
+}
+
+@keyframes ripple {
+  0%   { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.5); }
+  100% { box-shadow: 0 0 0 28px rgba(255, 107, 0, 0); }
+}
+
+@keyframes dotBounce {
+  0%, 80%, 100% { transform: scale(0.5); opacity: 0.3; }
+  40%           { transform: scale(1.15); opacity: 1; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.5; }
+}
+
+/* Animation Classes */
+.anim-fade   { animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.anim-up     { animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.anim-scale  { animation: scaleIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+.anim-float  { animation: float 3s ease-in-out infinite; will-change: transform; }
+.anim-ripple { animation: ripple 2s ease-out infinite; }
+.anim-slide-r{ animation: slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.anim-spin   { animation: spin 0.8s linear infinite; }
+.anim-pulse  { animation: pulseSoft 2s ease-in-out infinite; }
+
+.dot-bounce  { animation: dotBounce 1.4s ease-in-out infinite both; }
+
+/* Animation Delays */
+.delay-1  { animation-delay: 0.1s; }
+.delay-2  { animation-delay: 0.2s; }
+.delay-3  { animation-delay: 0.3s; }
+.delay-4  { animation-delay: 0.4s; }
+.delay-5  { animation-delay: 0.5s; }
+.delay-6  { animation-delay: 0.6s; }
+.delay-7  { animation-delay: 0.7s; }
+.delay-8  { animation-delay: 0.8s; }
+
+/* Shimmer Skeleton */
+.shimmer {
+  background: linear-gradient(90deg, #EDF0F7 25%, #E2E8F0 50%, #EDF0F7 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+button:active, a:active {
+  transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
